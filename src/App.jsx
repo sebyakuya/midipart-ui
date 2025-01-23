@@ -1,5 +1,4 @@
 import SmoothScroll from "smooth-scroll";
-import "./App.css";
 import CssBaseline from '@mui/material/CssBaseline';
 import AppAppBar from './components/AppAppBar';
 import Hero from './components/Hero';
