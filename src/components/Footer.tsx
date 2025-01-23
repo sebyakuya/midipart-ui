@@ -1,4 +1,3 @@
-import FacebookIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/X';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -13,7 +12,7 @@ function Copyright() {
     <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
       {'Copyright © '}
       <Link color="text.secondary" href="https://mui.com/">
-        MIDI Part
+      MIDIRating
       </Link>
       &nbsp;
       {new Date().getFullYear()}
@@ -105,16 +104,7 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://github.com/mui"
-            aria-label="GitHub"
-            sx={{ alignSelf: 'center' }}
-          >
-            <FacebookIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            size="small"
-            href="https://x.com/MaterialUI"
+            href="https://x.com/midirating"
             aria-label="X"
             sx={{ alignSelf: 'center' }}
           >

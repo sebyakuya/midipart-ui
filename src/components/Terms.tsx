@@ -78,7 +78,7 @@ export default function Terms() {
             </Typography>
             <Typography variant="h6">5. Limitation of Liability</Typography>
             <Typography variant='body1'>
-              MIDIPart shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the application or any errors or omissions in the content.
+              MIDIRating shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the application or any errors or omissions in the content.
             </Typography>
             <Typography variant="h6">6. Changes to Terms</Typography>
             <Typography variant='body1'>

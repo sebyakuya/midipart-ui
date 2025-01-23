@@ -54,7 +54,7 @@ export default function FAQ() {
             id="panel5d-header"
           >
             <Typography component="span" variant="subtitle2">
-              What is MIDIPart?
+              What is MIDIRating?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -63,7 +63,7 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              MIDIPart is a MIDI Piano Assessment Rating Tool designed to analyze MIDI files and provide insights into their structure and quality.
+              MIDIRating is a MIDI Piano Assessment Rating Tool designed to analyze MIDI files and provide insights into their structure and quality.
             </Typography>
           </AccordionDetails>
         </Accordion>
