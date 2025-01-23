@@ -14,18 +14,20 @@ import LogoIcon from './LogoIcon';
 
 export default function MainScreen() {
   const [message, setMessage] = useState("");
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleSubmit = () => {
-    console.log(files);
     if (files.length > 0) {
       const formData = new FormData();
       for (let index = 0; index < files.length; index++) {
         const element = files[index];
-        formData.append('file'+index, element);
+        if (element.size <= 15 * 1024 * 1024) {
+          formData.append('file' + index, element);
+        } else {
+          toast(`File ${element.name} is larger than 15MB and will be ignored.`);
+        }
       }
         
-
       fetch('/api/analyzem', {
         method: 'POST',
         body: formData,

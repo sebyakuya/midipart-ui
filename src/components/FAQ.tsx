@@ -45,16 +45,16 @@ export default function FAQ() {
       </Typography>
       <Box sx={{ width: '100%' }}>
         <Accordion
-          expanded={expanded.includes('panel1')}
-          onChange={handleChange('panel1')}
+          expanded={expanded.includes('panel5')}
+          onChange={handleChange('panel5')}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1d-content"
-            id="panel1d-header"
+            aria-controls="panel5d-content"
+            id="panel5d-header"
           >
             <Typography component="span" variant="subtitle2">
-              What does MIDIPart mean?
+              What is MIDIPart?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -63,21 +63,21 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              MIDIPart means MIDI Piano Assessment Rating Tool
+              MIDIPart is a MIDI Piano Assessment Rating Tool designed to analyze MIDI files and provide insights into their structure and quality.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded.includes('panel2')}
-          onChange={handleChange('panel2')}
+          expanded={expanded.includes('panel6')}
+          onChange={handleChange('panel6')}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2d-content"
-            id="panel2d-header"
+            aria-controls="panel6d-content"
+            id="panel6d-header"
           >
             <Typography component="span" variant="subtitle2">
-              Can I return the product if it doesn&apos;t meet my expectations?
+              How does the analysis work?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -86,23 +86,21 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              Absolutely! We offer a hassle-free return policy. If you&apos;re not
-              completely satisfied, you can return the product within [number of
-              days] days for a full refund or exchange.
+              The application analyzes the MIDI files by evaluating various parameters such as channels, notes, duration, and difficulty, providing a comprehensive report on the file's characteristics.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded.includes('panel3')}
-          onChange={handleChange('panel3')}
+          expanded={expanded.includes('panel7')}
+          onChange={handleChange('panel7')}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3d-content"
-            id="panel3d-header"
+            aria-controls="panel7d-content"
+            id="panel7d-header"
           >
             <Typography component="span" variant="subtitle2">
-              What makes your product stand out from others in the market?
+              Can I upload multiple MIDI files?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -111,23 +109,21 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              Our product distinguishes itself through its adaptability, durability,
-              and innovative features. We prioritize user satisfaction and
-              continually strive to exceed expectations in every aspect.
+              Yes, you can upload multiple MIDI files at once for analysis. The application will process each file and provide individual results.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded.includes('panel4')}
-          onChange={handleChange('panel4')}
+          expanded={expanded.includes('panel8')}
+          onChange={handleChange('panel8')}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel4d-content"
-            id="panel4d-header"
+            aria-controls="panel8d-content"
+            id="panel8d-header"
           >
             <Typography component="span" variant="subtitle2">
-              Is there a warranty on the product, and what does it cover?
+              Is there a limit to the file size?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -136,10 +132,7 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              Yes, our product comes with a [length of warranty] warranty. It covers
-              defects in materials and workmanship. If you encounter any issues
-              covered by the warranty, please contact our customer support for
-              assistance.
+              Yes, there is a file size limit for uploads. Please refer to the application guidelines for specific size restrictions.
             </Typography>
           </AccordionDetails>
         </Accordion>
