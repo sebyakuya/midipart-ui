@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import DragFileComponent from './DragFileComponent';
 import { Button } from '@mui/material';
+import { toast } from 'react-toastify';
+
 
 export default function MainScreen() {
   const [message, setMessage] = useState("");
@@ -27,6 +29,7 @@ export default function MainScreen() {
         });
     } else {
       console.log("No files selected");
+      toast("No files selected")
     }
   }
 

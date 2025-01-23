@@ -6,6 +6,7 @@ import FAQ from './components/FAQ';
 import About from './components/About';
 import Terms from './components/Terms';
 import Footer from './components/Footer';
+import { ToastContainer } from 'react-toastify';
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <div>
       <CssBaseline enableColorScheme />
+      <ToastContainer />
       <AppAppBar />
       <MainScreen />
       <FAQ />
