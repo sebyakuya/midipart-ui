@@ -86,7 +86,7 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              The application analyzes the MIDI files by evaluating various parameters such as channels, notes, duration, and difficulty, providing a comprehensive report on the file's characteristics.
+              The application analyzes the MIDI files by evaluating various parameters such as channels, notes, duration and other parameters, and ends up returning a difficulty score, providing a comprehensive report on the file's characteristics.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -133,6 +133,29 @@ export default function FAQ() {
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
               Yes, there is a file size limit for uploads. Please refer to the application guidelines for specific size restrictions.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          expanded={expanded.includes('panel9')}
+          onChange={handleChange('panel9')}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel8d-content"
+            id="panel8d-header"
+          >
+            <Typography component="span" variant="subtitle2">
+              I don't agree with the score for a given MIDI file
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography
+              variant="body2"
+              gutterBottom
+              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+            >
+              You can let me know your thoughts on the <a href='https://x.com/midirating'>public X account</a>. The scoring algorithm can be improved, and the more feedback I have the better!
             </Typography>
           </AccordionDetails>
         </Accordion>

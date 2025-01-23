@@ -90,7 +90,7 @@ export default function Terms() {
             </Typography>
             <Typography variant="h6">8. Contact Information</Typography>
             <Typography variant='body1'>
-              If you have any questions about these terms and conditions, please contact us at our public X account.
+              If you have any questions about these terms and conditions, please contact us at our <a href='https://x.com/midirating'>public X account</a>.
             </Typography>
           </AccordionDetails>
         </Accordion>

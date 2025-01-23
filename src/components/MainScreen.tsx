@@ -11,7 +11,6 @@ import FileAnalysisResult from './FileAnalysisResult';
 import Grid from '@mui/material/Grid';
 import LogoIcon from './LogoIcon';
 
-
 export default function MainScreen() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState<File[]>([]);
@@ -27,7 +26,7 @@ export default function MainScreen() {
           toast(`File ${element.name} is larger than 15MB and will be ignored.`);
         }
       }
-        
+
       fetch('/api/analyze', {
         method: 'POST',
         body: formData,
@@ -76,7 +75,7 @@ export default function MainScreen() {
           useFlexGap
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >
-          <LogoIcon/>
+          <LogoIcon />
           <Typography
             sx={{
               textAlign: 'center',
@@ -84,7 +83,7 @@ export default function MainScreen() {
               width: { sm: '100%', md: '80%' },
             }}
           >
-            The fastest MIDI analyzer
+            The top-rated and fastest tool for accurately determining the difficulty of piano music.
           </Typography>
           {message === "" &&
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
@@ -113,7 +112,7 @@ export default function MainScreen() {
             <Grid container spacing={2} justifyContent="center">
               {message.map((item, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
-                  
+
                   <FileAnalysisResult data={item} />
                 </Grid>
               ))}
