@@ -28,7 +28,7 @@ export default function MainScreen() {
         }
       }
         
-      fetch('/api/analyzem', {
+      fetch('/api/analyze', {
         method: 'POST',
         body: formData,
       })
