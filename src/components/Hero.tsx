@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import DragFileComponent from './DragFileComponent';
 import { Button } from '@mui/material';
 
@@ -11,18 +11,11 @@ export default function Hero() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
 
-  useEffect(() => {
+  const handleSubmit = () => {
+    console.log(files);
     fetch('/api').then(res => res.json()).then(data => {
       setMessage(data);
     });
-  }, []);
-
-
-  const handleSubmit = () => {
-    console.log(files);
-    // fetch('/api/analyze').then(res => res.json()).then(data => {
-    //   setMessage(data);
-    // });
   } 
 
   return (
