@@ -25,9 +25,18 @@ export default function About() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        About me
+        About Me
       </Typography>
-      <p>Text about me</p>
+      <Typography
+        variant="body1"
+        sx={{
+          color: 'text.primary',
+          width: { sm: '100%', md: '60%' },
+          textAlign: { sm: 'left', md: 'center' },
+        }}
+      >
+        Hi, I'm Alvaro
+      </Typography>
     </Container>
   );
 }

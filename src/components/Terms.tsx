@@ -4,7 +4,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -55,19 +54,43 @@ export default function Terms() {
             id="panel1d-header"
           >
             <Typography component="span" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
+              Open this to read the terms and conditions
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              You can reach our customer support team by emailing&nbsp;
-              <Link href="mailto:support@email.com">support@email.com</Link>
-              &nbsp;or calling our toll-free number. We&apos;re here to assist you
-              promptly.
+            <Typography variant="h6">1. Acceptance of Terms</Typography>
+            <Typography variant='body1'>
+              By using this web application, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.
+            </Typography>
+            <Typography variant="h6">2. Use of the Application</Typography>
+            <Typography variant='body1'>
+              You agree to use the application only for lawful purposes and in a manner that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the application.
+            </Typography>
+            <Typography variant="h6">3. Data Processing</Typography>
+            <Typography variant='body1'>
+              - The web application processes files and data as part of its functionality.
+              <br />
+              - No Data Storage: We do not store any information or files processed through the application. All data is processed in real-time and is not retained after the session ends.
+            </Typography>
+            <Typography variant="h6">4. User Responsibilities</Typography>
+            <Typography variant='body1'>
+              You are responsible for ensuring that any files or data you upload comply with applicable laws and regulations. You must not upload any content that is illegal, harmful, or infringes on the rights of others.
+            </Typography>
+            <Typography variant="h6">5. Limitation of Liability</Typography>
+            <Typography variant='body1'>
+              MIDIPart shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the application or any errors or omissions in the content.
+            </Typography>
+            <Typography variant="h6">6. Changes to Terms</Typography>
+            <Typography variant='body1'>
+              We reserve the right to modify these terms and conditions at any time. Any changes will be effective immediately upon posting on this page. Your continued use of the application after any changes constitutes your acceptance of the new terms.
+            </Typography>
+            <Typography variant="h6">7. Governing Law</Typography>
+            <Typography variant='body1'>
+              These terms and conditions shall be governed by and construed in accordance with the laws of Spain.
+            </Typography>
+            <Typography variant="h6">8. Contact Information</Typography>
+            <Typography variant='body1'>
+              If you have any questions about these terms and conditions, please contact us at our public X account.
             </Typography>
           </AccordionDetails>
         </Accordion>

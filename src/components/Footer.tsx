@@ -64,15 +64,15 @@ export default function Footer() {
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
             Company
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="#about">
             About me
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
+          {/* <Link color="text.secondary" variant="body2" href="#">
             Careers
           </Link>
           <Link color="text.secondary" variant="body2" href="#">
             Press
-          </Link>
+          </Link> */}
           
         </Box>
       </Box>
