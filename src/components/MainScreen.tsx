@@ -7,6 +7,8 @@ import { useState } from 'react';
 import DragFileComponent from './DragFileComponent';
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
+import FileAnalysisResult from './FileAnalysisResult';
+import Grid from '@mui/material/Grid';
 
 
 export default function MainScreen() {
@@ -127,9 +129,17 @@ export default function MainScreen() {
               }
             </Box>
           }
+          {message !== "" && Array.isArray(message) && (
+            <Grid container spacing={2} justifyContent="center">
+              {message.map((item, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <FileAnalysisResult data={item} />
+                </Grid>
+              ))}
+            </Grid>
+          )}
           {message !== "" &&
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-              <Typography>{JSON.stringify(message)}</Typography>
               <Button variant="contained" onClick={cleanResult}>Analyze a new file</Button>
             </Box>
           }
