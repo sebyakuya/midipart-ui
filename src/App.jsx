@@ -4,6 +4,7 @@ import AppAppBar from './components/AppAppBar';
 import MainScreen from './components/MainScreen';
 import FAQ from './components/FAQ';
 import About from './components/About';
+import Terms from './components/Terms';
 import Footer from './components/Footer';
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -20,6 +21,7 @@ const App = () => {
       <MainScreen />
       <FAQ />
       <About />
+      <Terms />
       <Footer />
     </div>
   );

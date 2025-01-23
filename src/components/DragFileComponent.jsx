@@ -49,8 +49,7 @@ const DragFileComponent = ({
             <div>
               <p>Drag and drop your files here</p>
               <p>
-                Limit 15MB per file. Supported files: .PDF, .DOCX, .PPTX, .TXT,
-                .XLSX
+                Limit 15MB per file. Supported files: .MID, .MIDI
               </p>
             </div>
           </div>
@@ -59,7 +58,7 @@ const DragFileComponent = ({
             hidden
             id="browse"
             onChange={handleFileChange}
-            accept=".pdf,.docx,.pptx,.txt,.xlsx"
+            accept=".mid,.midi"
             multiple
           />
           <label htmlFor="browse" className="browse-btn">
@@ -74,7 +73,6 @@ const DragFileComponent = ({
                 <div className="file-item" key={index}>
                   <div className="file-info">
                     <p>{file.name}</p>
-                    {/* <p>{file.type}</p> */}
                   </div>
                   <div className="file-actions">
                     <MdClear onClick={() => handleRemoveFile(index)} />

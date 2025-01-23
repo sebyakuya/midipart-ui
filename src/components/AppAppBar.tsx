@@ -55,6 +55,9 @@ export default function AppAppBar() {
               <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }} href="#about">
                 About me
               </Button>
+              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }} href="#terms">
+                Terms
+              </Button>
             </Box>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>

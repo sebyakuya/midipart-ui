@@ -73,6 +73,7 @@ export default function Footer() {
           <Link color="text.secondary" variant="body2" href="#">
             Press
           </Link>
+          
         </Box>
       </Box>
       <Box
@@ -86,8 +87,12 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="#terms">
             Terms of Service
+          </Link>
+          <span> - </span>
+          <Link color="text.secondary" variant="body2" href="https://www.flaticon.es/iconos-gratis/piano">
+            Favicon by Sympnoiaicon
           </Link>
           <Copyright />
         </div>

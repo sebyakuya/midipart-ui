@@ -13,10 +13,27 @@ export default function MainScreen() {
 
   const handleSubmit = () => {
     console.log(files);
-    fetch('/api').then(res => res.json()).then(data => {
-      setMessage(data);
-    });
-  } 
+    if (files.length > 0) {
+      const formData = new FormData();
+      formData.append('file', files[0]);
+
+      fetch('/api/analyze', {
+        method: 'POST',
+        body: formData,
+      })
+        .then(res => res.json())
+        .then(data => {
+          setMessage(data);
+        });
+    } else {
+      console.log("No files selected");
+    }
+  }
+
+  const cleanResult = () => {
+    setMessage("");
+    setFiles([]);
+  }
 
   return (
     <Box
@@ -80,22 +97,30 @@ export default function MainScreen() {
           >
             The fastest MIDI analyzer
           </Typography>
-          <Box>
-            <DragFileComponent onFilesSelected={setFiles} width={800} height={200}/>
-          </Box>
-          <Typography>{JSON.stringify(message)}</Typography>
-          <Button onClick={handleSubmit}>Submit</Button>
-          <Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ textAlign: 'center' }}
-          >
-            By clicking &quot;Analyze&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography>
+          {message === "" &&
+            <Box>
+              <DragFileComponent onFilesSelected={setFiles} width={800} height={200} />
+              <Button onClick={handleSubmit}>Submit</Button>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ textAlign: 'center' }}
+              >
+                By clicking &quot;Analyze&quot; you agree to our&nbsp;
+                <Link href="#" color="primary">
+                  Terms & Conditions
+                </Link>
+                .
+              </Typography>
+            </Box>
+          }
+          {message !== "" &&
+            <Box>
+              <Typography>{JSON.stringify(message)}</Typography>
+              <Button onClick={cleanResult}>Analyze a new file</Button>
+            </Box>
+          }
+
         </Stack>
       </Container>
     </Box>
