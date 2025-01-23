@@ -49,7 +49,7 @@ const DragFileComponent = ({
             <div>
               <p>Drag and drop your files here</p>
               <p>
-                Limit 15MB per file. Supported files: .MID, .MIDI
+                Limit 15MB per file. Supported files: .mid, .midi
               </p>
             </div>
           </div>

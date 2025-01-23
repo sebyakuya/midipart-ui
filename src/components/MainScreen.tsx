@@ -58,7 +58,7 @@ export default function MainScreen() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          pt: { xs: 14, sm: 20 },
+          pt: { xs: 14, sm: 14 },
           pb: { xs: 8, sm: 12 },
         }}
       >
@@ -105,26 +105,28 @@ export default function MainScreen() {
               <Box>
                 <DragFileComponent onFilesSelected={setFiles} width={800} height={"auto"} />
               </Box>
-              { files.length !== 0 && 
-                <Button style={{margin: "20px"}} variant="contained" onClick={handleSubmit}>Analyze</Button>            
+              {files.length !== 0 &&
+                <>
+                  <Button style={{ margin: "20px" }} variant="contained" onClick={handleSubmit}>Analyze</Button>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{ textAlign: 'center' }}
+                  >
+                    By clicking &quot;Analyze&quot; you agree to our&nbsp;
+                    <Link href="#terms" color="primary">
+                      Terms & Conditions
+                    </Link>
+                    .
+                  </Typography>
+                </>
               }
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{ textAlign: 'center' }}
-              >
-                By clicking &quot;Analyze&quot; you agree to our&nbsp;
-                <Link href="#" color="primary">
-                  Terms & Conditions
-                </Link>
-                .
-              </Typography>
             </Box>
           }
           {message !== "" &&
-            <Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
               <Typography>{JSON.stringify(message)}</Typography>
-              <Button onClick={cleanResult}>Analyze a new file</Button>
+              <Button variant="contained" onClick={cleanResult}>Analyze a new file</Button>
             </Box>
           }
 
