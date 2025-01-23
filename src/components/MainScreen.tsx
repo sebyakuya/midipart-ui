@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import FileAnalysisResult from './FileAnalysisResult';
 import Grid from '@mui/material/Grid';
+import LogoIcon from './LogoIcon';
 
 
 export default function MainScreen() {
@@ -73,30 +74,7 @@ export default function MainScreen() {
           useFlexGap
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >
-          <Typography
-            variant="h1"
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: 'center',
-              fontSize: 'clamp(3rem, 10vw, 3.5rem)',
-            }}
-          >
-            MIDI
-            <Typography
-              component="span"
-              variant="h1"
-              sx={(theme) => ({
-                fontSize: 'inherit',
-                color: 'primary.main',
-                ...theme.applyStyles('dark', {
-                  color: 'primary.light',
-                }),
-              })}
-            >
-              Part
-            </Typography>
-          </Typography>
+          <LogoIcon/>
           <Typography
             sx={{
               textAlign: 'center',

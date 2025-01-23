@@ -55,7 +55,7 @@ export default function FAQ() {
             id="panel1d-header"
           >
             <Typography component="span" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
+              What does MIDIPart mean?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -64,10 +64,7 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              You can reach our customer support team by emailing&nbsp;
-              <Link href="mailto:support@email.com">support@email.com</Link>
-              &nbsp;or calling our toll-free number. We&apos;re here to assist you
-              promptly.
+              MIDIPart means MIDI Piano Assessment Rating Tool
             </Typography>
           </AccordionDetails>
         </Accordion>
