@@ -101,9 +101,13 @@ export default function MainScreen() {
             The fastest MIDI analyzer
           </Typography>
           {message === "" &&
-            <Box>
-              <DragFileComponent onFilesSelected={setFiles} width={800} height={200} />
-              <Button onClick={handleSubmit}>Submit</Button>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+              <Box>
+                <DragFileComponent onFilesSelected={setFiles} width={800} height={"auto"} />
+              </Box>
+              { files.length !== 0 && 
+                <Button style={{margin: "20px"}} variant="contained" onClick={handleSubmit}>Analyze</Button>            
+              }
               <Typography
                 variant="caption"
                 color="text.secondary"
