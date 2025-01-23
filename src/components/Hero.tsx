@@ -20,7 +20,7 @@ export default function Hero() {
 
   return (
     <Box
-      id="hero"
+      id="analyzer"
       sx={(theme) => ({
         width: '100%',
         backgroundRepeat: 'no-repeat',
