@@ -7,7 +7,7 @@ import { useState } from 'react';
 import DragFileComponent from './DragFileComponent';
 import { Button } from '@mui/material';
 
-export default function Hero() {
+export default function MainScreen() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
 

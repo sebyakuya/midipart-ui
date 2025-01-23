@@ -1,7 +1,7 @@
 import SmoothScroll from "smooth-scroll";
 import CssBaseline from '@mui/material/CssBaseline';
 import AppAppBar from './components/AppAppBar';
-import Hero from './components/Hero';
+import MainScreen from './components/MainScreen';
 import FAQ from './components/FAQ';
 import About from './components/About';
 import Footer from './components/Footer';
@@ -17,7 +17,7 @@ const App = () => {
     <div>
       <CssBaseline enableColorScheme />
       <AppAppBar />
-      <Hero />
+      <MainScreen />
       <FAQ />
       <About />
       <Footer />
