@@ -111,6 +111,7 @@ export default function MainScreen() {
             <Grid container spacing={2} justifyContent="center">
               {message.map((item, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
+                  
                   <FileAnalysisResult data={item} />
                 </Grid>
               ))}

@@ -4,6 +4,7 @@ import { piano_notes } from './notes';
 
 interface FileAnalysisResultProps {
   data: {
+    error: string;
     abspath: string;
     channels: number;
     diff_note: number;
@@ -21,6 +22,10 @@ interface FileAnalysisResultProps {
 }
 
 const FileAnalysisResult: React.FC<FileAnalysisResultProps> = ({ data }) => {
+  if (data.error) {
+    return null; 
+  }
+
   return (
     <Card variant="outlined" sx={{ margin: 2 }}>
       <CardContent>
@@ -56,8 +61,8 @@ const FileAnalysisResult: React.FC<FileAnalysisResultProps> = ({ data }) => {
           <LinearProgress 
             variant="determinate" 
             value={data.difficulty * 100} 
-            color={data.difficulty < 0.3 ? 'success' : 
-                   data.difficulty < 0.6 ? 'warning' : 'error'}
+            color={data.difficulty <= 0.30 ? 'success' : 
+                   data.difficulty <= 0.70 ? 'warning' : 'error'}
           />
         </Box>
       </CardContent>
