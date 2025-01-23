@@ -17,9 +17,13 @@ export default function MainScreen() {
     console.log(files);
     if (files.length > 0) {
       const formData = new FormData();
-      formData.append('file', files[0]);
+      for (let index = 0; index < files.length; index++) {
+        const element = files[index];
+        formData.append('file'+index, element);
+      }
+        
 
-      fetch('/api/analyze', {
+      fetch('/api/analyzem', {
         method: 'POST',
         body: formData,
       })
