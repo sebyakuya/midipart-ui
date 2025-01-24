@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloudUpload } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
-import "./drag.css";
+import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const DragFileComponent = ({
   onFilesSelected,
@@ -14,7 +15,11 @@ const DragFileComponent = ({
     const selectedFiles = event.target.files;
     if (selectedFiles && selectedFiles.length > 0) {
       const newFiles = Array.from(selectedFiles);
-      setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+      if (files.length + newFiles.length <= 10) { 
+        setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+      } else {
+        toast("You can only upload a maximum of 10 files."); 
+      }
     }
   };
   const handleDrop = (event) => {
@@ -35,22 +40,21 @@ const DragFileComponent = ({
   }, [files, onFilesSelected]);
 
   return (
-    <section className="drag-drop" style={{ width: width, height: height }}>
+    <section style={{ ...styles.section, width, height }}>
       <div
-        className={`document-uploader ${
-          files.length > 0 ? "upload-box active" : "upload-box"
-        }`}
+        style={{
+          ...styles.dropArea,
+          borderColor: files.length > 0 ? '#6dc24b' : undefined,
+        }}
         onDrop={handleDrop}
         onDragOver={(event) => event.preventDefault()}
       >
         <>
-          <div className="upload-info">
-            <AiOutlineCloudUpload />
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+            <AiOutlineCloudUpload style={{ fontSize: '36px', marginRight: '1rem' }} />
             <div>
-              <p>Drag and drop your files here</p>
-              <p>
-                Limit 15MB per file. Supported files: .mid, .midi
-              </p>
+              <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>Drag and drop your files here</p>
+              <p style={{ margin: 0, fontSize: '16px' }}>Limit 15MB per file. Supported files: .mid, .midi</p>
             </div>
           </div>
           <input
@@ -61,21 +65,19 @@ const DragFileComponent = ({
             accept=".mid,.midi"
             multiple
           />
-          <label htmlFor="browse" className="browse-btn">
-            Browse files
-          </label>
+          <Button variant="contained" onClick={() => document.getElementById('browse').click()}>Browse files</Button>
         </>
 
         {files.length > 0 && (
-          <div className="file-list">
-            <div className="file-list__container">
+          <div style={styles.selectedFiles}>
+            <div style={{ width: '100%', height: '100%' }}>
               {files.map((file, index) => (
-                <div className="file-item" key={index}>
-                  <div className="file-info">
-                    <p>{file.name}</p>
+                <div style={styles.fileItem} key={index}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', flex: 1 }}>
+                    <p style={styles.fileName}>{file.name}</p>
                   </div>
-                  <div className="file-actions">
-                    <MdClear onClick={() => handleRemoveFile(index)} />
+                  <div style={{ cursor: 'pointer' }}>
+                    <MdClear onClick={() => handleRemoveFile(index)} style={{ fontSize: '18px', color: '#888' }} />
                   </div>
                 </div>
               ))}
@@ -84,16 +86,74 @@ const DragFileComponent = ({
         )}
 
         {files.length > 0 && (
-          <div className="success-file">
-            <AiOutlineCheckCircle
-              style={{ color: "#6DC24B", marginRight: 1 }}
-            />
-            <p>{files.length} file(s) selected</p>
+          <div style={styles.selectedCount}>
+            <AiOutlineCheckCircle style={styles.checkIcon} />
+            <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>{files.length} file(s) selected</p>
           </div>
         )}
       </div>
     </section>
   );
 };
+
+
+const styles = {
+  section: {
+    background: '#fff',
+    border: '1px solid var(--border-color)',
+    borderRadius: '8px',
+  },
+  dropArea: {
+    border: '2px dashed #4282fe',
+    backgroundColor: '#f4fbff',
+    padding: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  },
+  label: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0.5rem 1rem',
+    border: '1px solid var(--border-color)',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    backgroundColor: 'var(--primary-color)',
+  },
+  fileItem: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0.5rem',
+    border: '1px solid var(--border-color)',
+    borderRadius: '8px',
+  },
+  fileName: {
+    margin: 0,
+    fontSize: '14px',
+    color: '#333',
+  },
+  selectedFiles: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    width: '100%',
+  },
+  selectedCount: {
+    display: 'flex',
+    alignItems: 'center',
+    color: '#6dc24b',
+  },
+  checkIcon: {
+    color: "#6DC24B",
+    marginRight: 1,
+  },
+};
+
 
 export default DragFileComponent;
