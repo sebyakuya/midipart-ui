@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import DragFileComponent from './DragFileComponent';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { toast } from 'react-toastify';
 import FileAnalysisResult from './FileAnalysisResult';
 import Grid from '@mui/material/Grid';
@@ -14,6 +14,7 @@ import LogoIcon from './LogoIcon';
 export default function MainScreen() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState<File[]>([]);
+  const [loading, setLoading] = useState(false);
   const host = "https://l39q1vwefj.execute-api.eu-south-2.amazonaws.com/midirating";
 
   const handleSubmit = () => {
@@ -28,8 +29,9 @@ export default function MainScreen() {
         }
       }
 
-      
-      fetch(host+'/api/analyze', {
+      setLoading(true);
+
+      fetch(host + '/api/analyze', {
         method: 'POST',
         body: formData,
       })
@@ -44,6 +46,8 @@ export default function MainScreen() {
         }).catch(error => {
           console.error('There was a problem with the fetch operation:', error);
           toast('An error occurred while uploading files. Please try again.');
+        }).finally(() => {
+          setLoading(false);
         });
     } else {
       console.log("No files selected");
@@ -95,43 +99,53 @@ export default function MainScreen() {
           >
             The top-rated and fastest tool for accurately determining the difficulty of piano music.
           </Typography>
-          {message === "" &&
+          {loading &&
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-              <Box>
-                <DragFileComponent onFilesSelected={setFiles} width={800} height={"auto"} />
-              </Box>
-              {files.length !== 0 &&
-                <>
-                  <Button style={{ margin: "20px" }} variant="contained" onClick={handleSubmit}>Analyze</Button>
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    sx={{ textAlign: 'center' }}
-                  >
-                    By clicking &quot;Analyze&quot; you agree to our&nbsp;
-                    <Link href="#terms" color="primary">
-                      Terms & Conditions
-                    </Link>
-                    .
-                  </Typography>
-                </>
-              }
+              <CircularProgress />
             </Box>
           }
-          {message !== "" && Array.isArray(message) && (
-            <Grid container spacing={2} justifyContent="center">
-              {message.map((item, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+          {!loading &&
+            <>
+              {message === "" &&
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                  <Box>
+                    <DragFileComponent onFilesSelected={setFiles} width={800} height={"auto"} />
+                  </Box>
+                  {files.length !== 0 &&
+                    <>
+                      <Button style={{ margin: "20px" }} variant="contained" onClick={handleSubmit}>Analyze</Button>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{ textAlign: 'center' }}
+                      >
+                        By clicking &quot;Analyze&quot; you agree to our&nbsp;
+                        <Link href="#terms" color="primary">
+                          Terms & Conditions
+                        </Link>
+                        .
+                      </Typography>
+                    </>
+                  }
+                </Box>
+              }
 
-                  <FileAnalysisResult data={item} />
+              {message !== "" && Array.isArray(message) && (
+                <Grid container spacing={2} justifyContent="center">
+                  {message.map((item, index) => (
+                    <Grid item xs={12} sm={6} md={4} key={index}>
+
+                      <FileAnalysisResult data={item} />
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
-            </Grid>
-          )}
-          {message !== "" &&
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-              <Button variant="contained" onClick={cleanResult}>Analyze a new file</Button>
-            </Box>
+              )}
+              {message !== "" &&
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                  <Button variant="contained" onClick={cleanResult}>Analyze a new file</Button>
+                </Box>
+              }
+            </>
           }
 
         </Stack>
