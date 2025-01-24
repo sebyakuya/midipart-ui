@@ -23,7 +23,30 @@ interface FileAnalysisResultProps {
 
 const FileAnalysisResult: React.FC<FileAnalysisResultProps> = ({ data }) => {
   if (data.error) {
-    return null; 
+    return (
+      <Card variant="outlined" sx={{ margin: 2 }}>
+        <CardContent>
+          <Typography variant="h5" color="text.primary">
+            {data.file}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Error: {data.error}
+          </Typography>
+          
+          <Box sx={{ marginTop: 2 }}>
+            <Typography variant="h6" component="div">
+              Difficulty: Unknown
+            </Typography>
+            <LinearProgress 
+              variant="determinate" 
+              value={0} 
+              color={data.difficulty <= 0.30 ? 'success' : 
+                     data.difficulty <= 0.70 ? 'warning' : 'error'}
+            />
+          </Box>
+        </CardContent>
+      </Card>
+      ); 
   }
 
   return (
