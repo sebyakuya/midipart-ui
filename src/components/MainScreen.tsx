@@ -14,6 +14,7 @@ import LogoIcon from './LogoIcon';
 export default function MainScreen() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState<File[]>([]);
+  const host = "https://l39q1vwefj.execute-api.eu-south-2.amazonaws.com/midirating";
 
   const handleSubmit = () => {
     if (files.length > 0) {
@@ -26,14 +27,23 @@ export default function MainScreen() {
           toast(`File ${element.name} is larger than 15MB and will be ignored.`);
         }
       }
+
       
-      fetch('https://l39q1vwefj.execute-api.eu-south-2.amazonaws.com/midirating/api/analyze', {
+      fetch(host+'/api/analyze', {
         method: 'POST',
         body: formData,
       })
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return res.json()
+        })
         .then(data => {
           setMessage(data);
+        }).catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          toast('An error occurred while uploading files. Please try again.');
         });
     } else {
       console.log("No files selected");
