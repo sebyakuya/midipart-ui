@@ -15,10 +15,10 @@ const DragFileComponent = ({
     const selectedFiles = event.target.files;
     if (selectedFiles && selectedFiles.length > 0) {
       const newFiles = Array.from(selectedFiles);
-      if (files.length + newFiles.length <= 10) { 
+      if (files.length + newFiles.length <= 10) {
         setFiles((prevFiles) => [...prevFiles, ...newFiles]);
       } else {
-        toast("You can only upload a maximum of 10 files."); 
+        toast("You can only upload a maximum of 10 files at the same time.");
       }
     }
   };
@@ -51,10 +51,12 @@ const DragFileComponent = ({
       >
         <>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-            <AiOutlineCloudUpload style={{ fontSize: '36px', marginRight: '1rem' }} />
+            <div style={styles.uploadIcon}>
+              <AiOutlineCloudUpload />
+            </div>
             <div>
-              <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>Drag and drop your files here</p>
-              <p style={{ margin: 0, fontSize: '16px' }}>Limit 15MB per file. Supported files: .mid, .midi</p>
+              <p style={styles.dragText}>Drag and drop your files here</p>
+              <p style={styles.limitText}>Limit 15MB per file. Supported files: .mid, .midi</p>
             </div>
           </div>
           <input
@@ -73,7 +75,7 @@ const DragFileComponent = ({
             <div style={{ width: '100%', height: '100%' }}>
               {files.map((file, index) => (
                 <div style={styles.fileItem} key={index}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', flex: 1 }}>
+                  <div style={styles.fileItemText}>
                     <p style={styles.fileName}>{file.name}</p>
                   </div>
                   <div style={{ cursor: 'pointer' }}>
@@ -88,7 +90,7 @@ const DragFileComponent = ({
         {files.length > 0 && (
           <div style={styles.selectedCount}>
             <AiOutlineCheckCircle style={styles.checkIcon} />
-            <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>{files.length} file(s) selected</p>
+            <p style={styles.fileCount}>{files.length} file(s) selected</p>
           </div>
         )}
       </div>
@@ -153,6 +155,26 @@ const styles = {
     color: "#6DC24B",
     marginRight: 1,
   },
+  uploadIcon: {
+    fontSize: '36px',
+    marginRight: '1rem',
+  },
+  dragText: {
+    margin: 0,
+    fontSize: '16px',
+    fontWeight: 'bold',
+  },
+  limitText: {
+    margin: 0,
+    fontSize: '16px',
+  },
+  fileItemText: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.25rem',
+    flex: 1,
+  },
+  fileCount: { margin: 0, fontSize: '14px', fontWeight: 'bold' }
 };
 
 
