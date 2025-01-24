@@ -26,8 +26,8 @@ export default function MainScreen() {
           toast(`File ${element.name} is larger than 15MB and will be ignored.`);
         }
       }
-
-      fetch('/api/analyze', {
+      
+      fetch('https://l39q1vwefj.execute-api.eu-south-2.amazonaws.com/midirating/api/analyze', {
         method: 'POST',
         body: formData,
       })
